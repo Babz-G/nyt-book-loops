@@ -1024,26 +1024,47 @@ let data = {
   },
 };
 
+// Creates a function called updateCard that wraps all the code so it can be called later.
 function updateCard() {
+  // Finds the HTML element with class "card-container" & stores it in a variable.
   let container = document.querySelector(".card-container");
 
+  //Starts a loop that goes through each book in the data.results.books array. Each time through the loop, book represents one book object.
   for (let book of data.results.books) {
+    // Creates a new empty div element for this book's card
     let eachCard = document.createElement("div");
 
+    //Creates a paragraph element that will hold the book title.
     let title = document.createElement("p");
+
+    // Sets the text inside that paragraph to the current book's title
     title.textContent = book.title;
+
+    //Puts the title paragraph inside the card div
     eachCard.appendChild(title);
 
+    // Creates another paragraph element for the author's name.
     let author = document.createElement("p");
+
+    // Sets the text to the book's author name
     author.textContent = book.author;
+
+    // Adds the author paragraph to the card.
     eachCard.appendChild(author);
 
+    // Creates an image element to show the book cover.
     let bookImage = document.createElement("img");
+
+    // Sets the image source URL to the book's cover image URL from the data.
     bookImage.src = book.book_image;
     // ^^ looks in book object
+
+    //Adds the image to the card.
     eachCard.appendChild(bookImage);
 
+    // Takes the completed card and adds it to the container on the page. This is when it actually shows up for users to see.
     container.appendChild(eachCard);
   }
 }
+// Actually runs the function - without this line, nothing would happen! This executes all the code above.
 updateCard();
